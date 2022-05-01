@@ -7,6 +7,12 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const containerTab = document.querySelectorAll(".operations__tab-container")
+const tabs = document.querySelectorAll(".operations__tab ")
+const content = document.querySelectorAll(".operations__content")
+const nav = document.querySelector(".nav")
+
+
 
 const openModal = function (e) {
   
@@ -37,6 +43,48 @@ document.addEventListener('keydown', function (e) {
 });
 
 /////////////////
+
+/////nav opacity
+
+
+const controlHandler = function(e){
+  if(e.target.classList.contains('nav__link')){
+  
+    const link = e.target
+  
+    const list = link.closest(".nav").querySelectorAll(".nav__link")
+  
+    const logo = link.closest(".nav").querySelector("img")
+  
+  
+  
+    list.forEach((el)=>{
+      if(el!==link) el.style.opacity=this
+      
+    })
+     
+    logo.style.opacity=this
+  
+     
+  
+  }
+}
+
+
+
+
+
+
+nav.addEventListener("mouseover",controlHandler.bind(0.5))
+
+nav.addEventListener("mouseout",controlHandler.bind(1))
+
+
+
+
+
+
+
 
 ///smooth scrool
 
@@ -71,12 +119,6 @@ document.querySelector(".nav__links").addEventListener('click',function(e){
 
 ///////
 
-const containerTab = document.querySelectorAll(".operations__tab-container")
-
-const tabs = document.querySelectorAll(".operations__tab ")
-
-const content = document.querySelectorAll(".operations__content")
-
 
 
 containerTab.forEach((e)=>e.addEventListener("click",function(e){
@@ -89,11 +131,12 @@ containerTab.forEach((e)=>e.addEventListener("click",function(e){
 
 
   ///remve class
+
   tabs.forEach((e)=>e.classList.remove("operations__tab--active"))
   content.forEach((t)=>t.classList.remove("operations__content--active"))
   ///add class
-  clicked.classList.add("operations__tab--active")
 
+  clicked.classList.add("operations__tab--active")
   document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add("operations__content--active")
 
 
