@@ -69,9 +69,35 @@ document.querySelector(".nav__links").addEventListener('click',function(e){
 })
 
 
-
-
 ///////
+
+const containerTab = document.querySelectorAll(".operations__tab-container")
+
+const tabs = document.querySelectorAll(".operations__tab ")
+
+const content = document.querySelectorAll(".operations__content")
+
+
+
+containerTab.forEach((e)=>e.addEventListener("click",function(e){
+ 
+  const clicked =e.target.closest(".operations__tab")
+
+ 
+
+  if(!clicked) return
+
+
+  ///remve class
+  tabs.forEach((e)=>e.classList.remove("operations__tab--active"))
+  content.forEach((t)=>t.classList.remove("operations__content--active"))
+  ///add class
+  clicked.classList.add("operations__tab--active")
+
+  document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add("operations__content--active")
+
+
+}))
 
 
 
